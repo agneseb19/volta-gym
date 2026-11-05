@@ -259,23 +259,20 @@ gsap.timeline()
   .to(loader,{yPercent:-100,duration:.9,ease:'power4.inOut'},1.5)
   .fromTo('#heroImg',{scale:1.35,filter:'brightness(.2)'},{scale:1.08,filter:'brightness(1)',duration:2.4,ease:'expo.out'},1.6)
   .from(letters,{yPercent:120,rotationX:-80,opacity:0,duration:1.2,stagger:.06,ease:'expo.out'},1.9)
-  .to(W,{barS:small?.7:1,duration:1,ease:'expo.out'},2.0)
-  .to(W,{load:1,duration:1.6,ease:'power2.inOut'},2.3)
   .from('.hero-bottom > *',{y:30,opacity:0,duration:.8,stagger:.1,ease:'power3.out'},2.5)
   .add(()=>loader.remove());
-KF.hero.barS=small?.7:1;KF.hero.load=1;prevKF=Object.assign({},KF.hero);
+prevKF=Object.assign({},KF.hero); // hero senza bilanciere: il testo resta libero
 
 /* 1 hero: barbell turns end-on and the camera dives into the plate */
 gsap.timeline({scrollTrigger:{trigger:'#hero',start:'top top',end:'+=220%',scrub:1,pin:true,anticipatePin:1}})
   .to('.hero-bottom,.scroll-hint',{opacity:0,y:-60,duration:.12},0)
   .to(letters,{z:(i)=>500+i*90,x:(i)=>(i-2)*innerWidth*.3,y:(i)=>(i%2?-1:1)*innerHeight*.2,rotationY:(i)=>(i-2)*-30,opacity:0,ease:'power2.in',duration:.45,stagger:.02},0)
   .to('#heroImg',{scale:1.5,filter:'brightness(.35) blur(4px)',ease:'power1.in',duration:.9},0)
-  .to(W,{barY:0,barRX:0,barRY:-Math.PI/2*.92,lift:0,ease:'power2.inOut',duration:.5},0)
-  .to(W,{camZ:small?3.3:3.05,dust:.8,ease:'power3.in',duration:.42},.48)
+  .to(W,{dust:.8,ease:'power2.in',duration:.85},0)
   .to('#blackout',{opacity:1,duration:.08,ease:'none'},.86)
-  .set(W,{barS:0,barRY:0,barY:-1.2,camZ:7,dust:.3},.95)
+  .set(W,{dust:.3},.95)
   .to('#blackout',{opacity:0,duration:.05},.95);
-commit({barS:0,barRY:0,barY:-1.2,camZ:7,dust:.3,load:1});
+commit({dust:.3});
 
 /* 2 manifesto: words flip in, photos reveal, kettlebell swings */
 approach('#manifesto','manifesto','top 60%','top top');
