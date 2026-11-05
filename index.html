@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>VOLTA Athletic Club · Palestra a Bologna</title>
+  <meta name="description" content="VOLTA Athletic Club: palestra in un'ex fonderia a Bologna. Sala pesi, functional, boxe, pilates, mobility e personal training.">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+
+  <!-- Stile -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Segnala che JavaScript è attivo (serve al preloader) -->
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="blackout" id="blackout" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<div class="loader" aria-hidden="true">
+  <div class="loader-bpm"><span id="loaderNum">0</span><small>BPM</small></div>
+  <svg viewBox="0 0 520 70"><path id="loaderPath" d="M0 40 H170 L186 40 L196 18 L206 58 L218 4 L232 66 L244 40 H330 L340 30 L350 40 H520"/></svg>
+</div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" data-scroll><i></i>VOLTA</a>
+  <ul>
+    <li><a href="#discipline" data-scroll>Discipline</a></li>
+    <li><a href="#coach" data-scroll>Coach</a></li>
+    <li><a href="#abbonamenti" data-scroll>Abbonamenti</a></li>
+    <li><a href="#dove" data-scroll>Dove siamo</a></li>
+  </ul>
+  <a class="nav-cta" href="#prova" data-scroll>Prova gratis</a>
+</header>
+
+<div class="hud" role="status" aria-label="Battito della pagina">
+  <div class="hud-ecg" aria-hidden="true"><svg viewBox="0 0 168 28" preserveAspectRatio="none"><path d="M0 16 H20 L26 16 L30 8 L34 24 L39 2 L45 26 L50 16 H84 H104 L110 16 L114 8 L118 24 L123 2 L129 26 L134 16 H168"/></svg></div>
+  <span class="hud-num" id="bpm">62</span>
+  <div class="hud-meta"><span class="hud-unit">BPM</span><span class="hud-phase" id="phase">Riscaldamento</span></div>
+  <div class="hud-bar" aria-hidden="true"><span id="progress"></span></div>
+</div>
+
+<main id="top">
+
+<!-- 1 HERO -->
+<section class="hero" id="hero" aria-label="VOLTA Athletic Club">
+  <div class="bg"><img id="heroImg" src="assets/img/hero.jpg" alt="La sala principale di VOLTA: capannone industriale con lucernari, rack e pedane"></div>
+  <div class="hero-title"><h1 id="heroWord" class="shade" aria-label="VOLTA"><span>V</span><span>O</span><span>L</span><span>T</span><span>A</span></h1></div>
+  <div class="wrap hero-bottom shade">
+    <p>Athletic club in un'ex fonderia del 1961. Ferro, mattoni, 1.200 metri quadri di allenamento serio a Bologna.</p>
+    <div class="hero-meta">
+      <div><span class="eyebrow">Dove</span><strong>Via delle Fonderie 14</strong></div>
+      <div><span class="eyebrow">Oggi</span><strong id="heroToday">06:00 — 23:00</strong></div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">SCORRI PER CARICARE IL BILANCIERE</div>
+</section>
+
+<!-- 2 MANIFESTO -->
+<section class="manifesto" id="manifesto" aria-labelledby="man-t">
+  <figure class="man-photo a" style="margin:0"><img src="assets/img/deadlift.jpg" alt="Stacco da terra con bilanciere su pavimento in gomma"></figure>
+  <figure class="man-photo b" style="margin:0"><img src="assets/img/grip.jpg" alt="Presa sul bilanciere, mano con magnesite"></figure>
+  <div class="wrap man-text">
+    <p class="eyebrow"><b>01</b> · Il metodo</p>
+    <h2 class="manifesto-text shade" id="man-t">Non vendiamo abbonamenti. Costruiamo <span class="hot">abitudini</span> che reggono il <span class="hot">peso</span>.</h2>
+    <p class="manifesto-sub">Ogni percorso parte da una valutazione con un coach: postura, obiettivi, tempo che hai davvero. Poi un piano, rivisto ogni quattro settimane.</p>
+  </div>
+</section>
+
+<!-- 3 LO SPAZIO -->
+<section class="tunnel" id="spazio" aria-label="Lo spazio">
+  <div class="tunnel-head"><p class="eyebrow"><b>02</b> · Lo spazio</p><p class="count"><span id="tunN">1</span> / 4</p></div>
+  <div class="tunnel-world">
+    <article class="frame"><img src="assets/img/t-pesi.jpg" alt="Rastrelliera di manubri e panche in sala pesi"><div class="frame-cap"><span>PIANO TERRA · 640 m²</span><h3>Sala pesi</h3><p>12 rack olimpici, manubri fino a 60 kg, pedane in rovere. Sotto le travi originali della fonderia.</p></div></article>
+    <article class="frame"><img src="assets/img/t-ring.jpg" alt="Allenamento ai colpitori contro un muro di mattoni"><div class="frame-cap"><span>PIANO TERRA · 6×6 m</span><h3>Il ring</h3><p>Ring regolamentare e otto sacchi pesanti per boxe e kickboxing.</p></div></article>
+    <article class="frame"><img src="assets/img/t-functional.jpg" alt="Battle rope in un capannone industriale"><div class="frame-cap"><span>EX REPARTO COLATA · 300 m²</span><h3>Functional</h3><p>Corde, slitte, kettlebell e una corsia da 30 metri per gli sprint.</p></div></article>
+    <article class="frame"><img src="assets/img/t-corsi.jpg" alt="Lezione di gruppo su tappetini in una sala con mattoni a vista"><div class="frame-cap"><span>PRIMO PIANO · 2 SALE</span><h3>Sale corsi</h3><p>Pilates, yoga e mobility in sale luminose da massimo 16 persone.</p></div></article>
+  </div>
+</section>
+
+<!-- 4 DISCIPLINE -->
+<section class="disc" id="discipline" aria-labelledby="disc-t">
+  <div class="wrap disc-ui shade">
+    <div class="disc-top"><div><p class="eyebrow"><b>03</b> · Discipline</p><h2 id="disc-t">Sei modi di sudare</h2></div><p class="disc-count"><span id="discN">01</span> / 06</p></div>
+    <div class="disc-now" aria-live="polite">
+      <div><span class="when" id="discWhen">Accesso libero</span><h3><span id="discName">Sala pesi</span></h3></div>
+      <p id="discDesc">Forza e ipertrofia con schede scritte dal tuo coach.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-inner" id="marquee"></div></div>
+
+<!-- 5 PICCO -->
+<section class="picco" id="picco" aria-labelledby="picco-t">
+  <div class="bg"><img id="piccoImg" src="assets/img/picco.jpg" alt="Atleta che solleva un bilanciere carico in una sala buia"></div>
+  <div class="wrap picco-inner">
+    <div><p class="eyebrow" style="color:var(--calce)"><b style="color:var(--ferro)">04</b> · Al massimo</p><h2 id="picco-t">I numeri della fonderia</h2></div>
+    <div class="picco-grid">
+      <div class="stat"><strong data-count="1200">0</strong><span>m² di allenamento</span></div>
+      <div class="stat"><strong data-count="18">0</strong><span>coach certificati</span></div>
+      <div class="stat"><strong data-count="92">0</strong><span>lezioni a settimana</span></div>
+      <div class="stat"><strong data-count="17">0</strong><span>ore al giorno, feriali</span></div>
+    </div>
+    <div><div class="flap" id="flap"></div><p class="flap-note" id="flapNote"></p></div>
+  </div>
+</section>
+
+<!-- 6 COACH -->
+<section class="coach wrap" id="coach" aria-labelledby="coach-t">
+  <div class="coach-head"><div><p class="eyebrow"><b>05</b> · Coach</p><h2 id="coach-t">Chi ti allena</h2></div><p>Diciotto professionisti con laurea in scienze motorie o certificazioni federali.</p></div>
+  <div class="deck" id="deck">
+    <article class="coach-card"><img src="assets/img/c-giulia.jpg" alt="Giulia Ferri"><div class="info"><span class="role">Forza · powerlifting</span><h3>Giulia Ferri</h3></div></article>
+    <article class="coach-card"><img src="assets/img/c-marco.jpg" alt="Marco Lenzi"><div class="info"><span class="role">Boxe · kickboxing</span><h3>Marco Lenzi</h3></div></article>
+    <article class="coach-card"><img src="assets/img/c-sara.jpg" alt="Sara Okafor"><div class="info"><span class="role">Pilates · mobility</span><h3>Sara Okafor</h3></div></article>
+    <article class="coach-card"><img src="assets/img/c-davide.jpg" alt="Davide Rinaldi"><div class="info"><span class="role">Functional</span><h3>Davide Rinaldi</h3></div></article>
+  </div>
+</section>
+
+<!-- 7 ABBONAMENTI -->
+<section class="prezzi wrap" id="abbonamenti" aria-labelledby="prezzi-t">
+  <div class="prezzi-head">
+    <div><p class="eyebrow"><b>06</b> · Abbonamenti</p><h2 id="prezzi-t">Scegli il carico</h2></div>
+    <div class="toggle" role="group" aria-label="Periodo di pagamento"><button type="button" id="btnMese" aria-pressed="true">Mensile</button><button type="button" id="btnAnno" aria-pressed="false">Annuale −20%</button></div>
+  </div>
+  <div class="tiers">
+    <article class="tier"><h3>Base</h3><div class="price"><strong data-m="49" data-y="39">49</strong><small>€ / mese</small></div><ul><li>Sala pesi in accesso libero</li><li>Valutazione iniziale</li><li>App per le prenotazioni</li></ul><a class="btn" href="#prova" data-scroll>Scegli Base</a></article>
+    <article class="tier feat"><span class="badge">Il più scelto</span><h3>Full</h3><div class="price"><strong data-m="69" data-y="55">69</strong><small>€ / mese</small></div><ul><li>Tutto di Base</li><li>Corsi illimitati</li><li>Scheda aggiornata ogni 4 settimane</li></ul><a class="btn" href="#prova" data-scroll>Scegli Full</a></article>
+    <article class="tier"><h3>Volta+</h3><div class="price"><strong data-m="99" data-y="79">99</strong><small>€ / mese</small></div><ul><li>Tutto di Full</li><li>2 sedute di personal al mese</li><li>Recovery zone e nutrizionista</li></ul><a class="btn" href="#prova" data-scroll>Scegli Volta+</a></article>
+  </div>
+  <p class="prezzi-note">Quota d'iscrizione 30 € con certificato medico sportivo non agonistico. Prezzi IVA inclusa.</p>
+</section>
+
+<!-- 8 RECOVERY -->
+<section class="recovery" id="recovery" aria-labelledby="rec-t">
+  <div class="bg"><img id="recImg" src="assets/img/recovery.jpg" alt="Atleta a occhi chiusi che respira dopo l'allenamento"></div>
+  <figure class="rec-photo" style="margin:0"><img src="assets/img/stretch.jpg" alt="Stretching a terra su tappetino"></figure>
+  <div class="wrap inner">
+    <p class="eyebrow"><b>07</b> · Recovery</p>
+    <h2 id="rec-t">Rallenta.</h2>
+    <p class="recovery-lead">L'allenamento finisce quando il corpo si è ripreso. La recovery zone è inclusa in Volta+ e si prenota a slot da 40 minuti.</p>
+    <div class="rec-list">
+      <div class="rec"><strong>90°</strong><h3>Sauna finlandese</h3><p>Legno di abete, otto posti, cicli da 12 minuti.</p></div>
+      <div class="rec"><strong>8°</strong><h3>Vasca fredda</h3><p>Immersione guidata di 2–3 minuti dopo la sauna.</p></div>
+      <div class="rec"><strong>20′</strong><h3>Stretching assistito</h3><p>Con un fisioterapista, il martedì e il giovedì sera.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 DOVE -->
+<section class="dove" id="dove" aria-labelledby="dove-t">
+  <div class="wrap">
+  <p class="eyebrow"><b>08</b> · Dove siamo</p>
+  <h2 id="dove-t">Zona Navile, Bologna</h2>
+  <div class="dove-grid">
+    <div class="map">
+      <svg id="mapSvg" viewBox="0 0 640 440" role="img" aria-label="Mappa schematica dalla stazione di Bologna Centrale a Via delle Fonderie 14">
+        <path class="canal" d="M420 0 C 400 120, 470 200, 430 300 S 450 420, 460 440"/>
+        <path class="street big" d="M0 330 H640"/><path class="street big" d="M250 0 V440"/>
+        <path class="street" d="M0 250 H640 M0 140 H640 M0 60 H640 M120 0 V440 M360 0 V440 M540 0 V440 M0 400 L250 330"/>
+        <path class="route" id="route" d="M150 380 L250 330 V250 H360 V140 H486"/>
+        <circle cx="150" cy="380" r="8" fill="#efe9df"/>
+        <text x="40" y="420">Bologna Centrale</text>
+        <g id="pin"><circle cx="486" cy="140" r="22" fill="#ff5b1f" opacity=".25"/><circle cx="486" cy="140" r="9" fill="#ff5b1f"/><text class="pin-label" x="470" y="104">VOLTA</text></g>
+        <text x="434" y="290" transform="rotate(-70 434 290)">Canale Navile</text>
+      </svg>
+    </div>
+    <div class="info">
+      <address>Via delle Fonderie 14<br>40129 Bologna</address>
+      <table class="orari" aria-label="Orari di apertura"><tbody>
+        <tr data-days="1,2,3,4,5"><td>Lunedì – Venerdì</td><td>06:00 – 23:00</td></tr>
+        <tr data-days="6"><td>Sabato</td><td>08:00 – 20:00</td></tr>
+        <tr data-days="0"><td>Domenica</td><td>09:00 – 14:00</td></tr>
+      </tbody></table>
+      <div class="reach"><span>12 minuti a piedi dalla stazione centrale</span><span>Bus 27 e 11, fermata Fonderie</span><span>Parcheggio interno per bici e 40 auto</span></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- 10 CTA -->
+<section class="cta" id="prova" aria-labelledby="cta-t">
+  <div class="bg"><img id="ctaImg" src="assets/img/cta.jpg" alt="Atleta che esegue un curl con bilanciere"></div>
+  <div class="wrap inner shade">
+    <p class="eyebrow"><b>09</b> · Defaticamento</p>
+    <h2 id="cta-t">Il primo allenamento lo offriamo noi</h2>
+    <a class="mag" href="#top" data-scroll id="mag"><span>Prova 7 giorni gratis</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row"><span>VOLTA Athletic Club · Via delle Fonderie 14, Bologna</span><nav aria-label="Pagine"><a href="#discipline" data-scroll>Discipline</a><a href="#coach" data-scroll>Coach</a><a href="#abbonamenti" data-scroll>Abbonamenti</a><a href="#dove" data-scroll>Contatti</a></nav></div>
+  <div class="wordmark" id="wordmark" aria-hidden="true">VOLTA</div>
+  <p class="demo-note">Demo · palestra fittizia · foto Unsplash</p>
+</footer>
+</main>
+
+<!-- Librerie: Three.js (3D), GSAP + ScrollTrigger (animazioni allo scroll), Lenis (scroll fluido) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<!-- Il nostro codice -->
+<script src="js/main.js"></script>
+</body>
+</html>
